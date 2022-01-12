@@ -1,7 +1,7 @@
 package com.teamacronymcoders.essence.common.entity;
 
 import com.teamacronymcoders.essence.compat.registrate.EssenceEntityRegistrate;
-import com.teamacronymcoders.essence.compat.registrate.EssenceItemRegistrate;
+import com.teamacronymcoders.essence.compat.registrate.EssenceItemsRegistry;
 import com.teamacronymcoders.essence.compat.registrate.EssenceParticleRegistrate;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
@@ -39,7 +39,7 @@ public class GlueBallEntity extends ThrowableItemProjectile {
 
     @Override
     protected Item getDefaultItem() {
-        return EssenceItemRegistrate.GLUE_BALL_ITEM.get();
+        return EssenceItemsRegistry.GLUE_BALL_ITEM.get();
     }
 
     @OnlyIn(Dist.CLIENT)

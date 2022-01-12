@@ -6,7 +6,7 @@ import com.teamacronymcoders.essence.common.item.essence.EssenceIngotItem;
 import com.teamacronymcoders.essence.common.item.essence.EssenceNuggetItem;
 import com.teamacronymcoders.essence.common.util.EssenceTags;
 import com.teamacronymcoders.essence.compat.registrate.EssenceBlockRegistrate;
-import com.teamacronymcoders.essence.compat.registrate.EssenceItemRegistrate;
+import com.teamacronymcoders.essence.compat.registrate.EssenceItemsRegistry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.tags.Tag;
@@ -18,31 +18,31 @@ import java.util.function.Supplier;
 
 public enum EssenceItemTiers implements IEssenceBaseTier {
     BASIC("tier.essence.basic", Rarity.COMMON,
-            () -> Pair.of(EssenceItemRegistrate.ESSENCE_NUGGET, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_NUGGET),
-            () -> Pair.of(EssenceItemRegistrate.ESSENCE_INGOT, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL),
+            () -> Pair.of(EssenceItemsRegistry.ESSENCE_NUGGET, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_NUGGET),
+            () -> Pair.of(EssenceItemsRegistry.ESSENCE_INGOT, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL),
             () -> Pair.of(EssenceBlockRegistrate.ESSENCE_INFUSED_METAL_BLOCK, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_BLOCK),
-            () -> Pair.of(EssenceItemRegistrate.ESSENCE_CRYSTAL, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_CRYSTAL),
+            () -> Pair.of(EssenceItemsRegistry.ESSENCE_CRYSTAL, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_CRYSTAL),
             () -> Pair.of(EssenceBlockRegistrate.ESSENCE_INFUSED_CRYSTAL_BLOCK, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_CRYSTAL_BLOCK),
             3),
     EMPOWERED("tier.essence.empowered", Rarity.UNCOMMON,
-            () -> Pair.of(EssenceItemRegistrate.ESSENCE_NUGGET_EMPOWERED, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_NUGGET_EMPOWERED),
-            () -> Pair.of(EssenceItemRegistrate.ESSENCE_INGOT_EMPOWERED, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_EMPOWERED),
+            () -> Pair.of(EssenceItemsRegistry.ESSENCE_NUGGET_EMPOWERED, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_NUGGET_EMPOWERED),
+            () -> Pair.of(EssenceItemsRegistry.ESSENCE_INGOT_EMPOWERED, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_EMPOWERED),
             () -> Pair.of(EssenceBlockRegistrate.ESSENCE_INFUSED_METAL_EMPOWERED_BLOCK, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_BLOCK_EMPOWERED),
-            () -> Pair.of(EssenceItemRegistrate.ESSENCE_CRYSTAL_EMPOWERED, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_CRYSTAL_EMPOWERED),
+            () -> Pair.of(EssenceItemsRegistry.ESSENCE_CRYSTAL_EMPOWERED, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_CRYSTAL_EMPOWERED),
             () -> Pair.of(EssenceBlockRegistrate.ESSENCE_INFUSED_CRYSTAL_EMPOWERED_BLOCK, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_CRYSTAL_EMPOWERED_BLOCK),
             4),
     SUPREME("tier.essence.supreme", Rarity.RARE,
-            () -> Pair.of(EssenceItemRegistrate.ESSENCE_NUGGET_SUPREME, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_NUGGET_SUPREME),
-            () -> Pair.of(EssenceItemRegistrate.ESSENCE_INGOT_SUPREME, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_SUPREME),
+            () -> Pair.of(EssenceItemsRegistry.ESSENCE_NUGGET_SUPREME, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_NUGGET_SUPREME),
+            () -> Pair.of(EssenceItemsRegistry.ESSENCE_INGOT_SUPREME, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_SUPREME),
             () -> Pair.of(EssenceBlockRegistrate.ESSENCE_INFUSED_METAL_SUPREME_BLOCK, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_BLOCK_SUPREME),
-            () -> Pair.of(EssenceItemRegistrate.ESSENCE_CRYSTAL_SUPREME, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_CRYSTAL_SUPREME),
+            () -> Pair.of(EssenceItemsRegistry.ESSENCE_CRYSTAL_SUPREME, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_CRYSTAL_SUPREME),
             () -> Pair.of(EssenceBlockRegistrate.ESSENCE_INFUSED_CRYSTAL_SUPREME_BLOCK, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_CRYSTAL_SUPREME_BLOCK),
             5),
     DIVINE("tier.essence.divine", Rarity.EPIC,
-            () -> Pair.of(EssenceItemRegistrate.ESSENCE_NUGGET_DIVINE, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_NUGGET_DIVINE),
-            () -> Pair.of(EssenceItemRegistrate.ESSENCE_INGOT_DIVINE, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_DIVINE),
+            () -> Pair.of(EssenceItemsRegistry.ESSENCE_NUGGET_DIVINE, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_NUGGET_DIVINE),
+            () -> Pair.of(EssenceItemsRegistry.ESSENCE_INGOT_DIVINE, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_DIVINE),
             () -> Pair.of(EssenceBlockRegistrate.ESSENCE_INFUSED_METAL_DIVINE_BLOCK, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_BLOCK_DIVINE),
-            () -> Pair.of(EssenceItemRegistrate.ESSENCE_CRYSTAL_DIVINE, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_CRYSTAL_DIVINE),
+            () -> Pair.of(EssenceItemsRegistry.ESSENCE_CRYSTAL_DIVINE, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_CRYSTAL_DIVINE),
             () -> Pair.of(EssenceBlockRegistrate.ESSENCE_INFUSED_CRYSTAL_DIVINE_BLOCK, EssenceTags.EssenceItemTags.ESSENCE_INFUSED_CRYSTAL_DIVINE_BLOCK),
             6);
 

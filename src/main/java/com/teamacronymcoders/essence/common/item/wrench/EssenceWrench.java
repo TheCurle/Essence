@@ -17,7 +17,7 @@ import com.teamacronymcoders.essence.common.util.config.EssenceGeneralConfig;
 import com.teamacronymcoders.essence.common.util.helper.EssenceInformationHelper;
 import com.teamacronymcoders.essence.common.util.network.base.IItemNetwork;
 import com.teamacronymcoders.essence.common.util.tier.EssenceToolTiers;
-import com.teamacronymcoders.essence.compat.registrate.EssenceItemRegistrate;
+import com.teamacronymcoders.essence.compat.registrate.EssenceItemsRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.Util;
@@ -81,7 +81,7 @@ public class EssenceWrench extends Item implements IModifiedItem, IItemNetwork {
         LazyOptional<ItemStackModifierHolder> lazy = stack.getCapability(EssenceCapability.ITEMSTACK_MODIFIER_HOLDER);
         return lazy.isPresent() ? lazy.map(holder -> {
             Optional<ModifierInstance> optional = holder.getModifierInstances().stream().filter(instance -> instance.getModifier() instanceof EfficiencyModifier).findAny();
-            ItemStack serialized = new ItemStack(EssenceItemRegistrate.SERIALIZED_ENTITY.get());
+            ItemStack serialized = new ItemStack(EssenceItemsRegistry.SERIALIZED_ENTITY.get());
             boolean successful;
             if (optional.isPresent()) {
                 successful = serializeEntity(serialized, target, true);

@@ -30,7 +30,7 @@ import com.teamacronymcoders.essence.common.world.generation.ore.EssencePlacedFe
 import com.teamacronymcoders.essence.common.world.generation.tree.EssenceTreeFeatures;
 import com.teamacronymcoders.essence.compat.registrate.EssenceBlockRegistrate;
 import com.teamacronymcoders.essence.compat.registrate.EssenceFluidRegistrate;
-import com.teamacronymcoders.essence.compat.registrate.EssenceItemRegistrate;
+import com.teamacronymcoders.essence.compat.registrate.EssenceItemsRegistry;
 import com.teamacronymcoders.essence.data.loot.FieryLootModifier;
 import com.teamacronymcoders.essence.server.command.EssenceCommands;
 import net.minecraft.client.Minecraft;
@@ -145,14 +145,14 @@ public class EssenceEventHandlers {
         );
 
         TOOL_TAB.addIconStacks(
-                () -> new ItemStack(EssenceItemRegistrate.ESSENCE_AXE.get()),
-                () -> new ItemStack(EssenceItemRegistrate.ESSENCE_PICKAXE.get()),
-                () -> new ItemStack(EssenceItemRegistrate.ESSENCE_SHOVEL.get()),
-                () -> new ItemStack(EssenceItemRegistrate.ESSENCE_SWORD.get()),
-                () -> new ItemStack(EssenceItemRegistrate.ESSENCE_HOE.get()),
-                () -> new ItemStack(EssenceItemRegistrate.ESSENCE_OMNITOOL.get()),
-                () -> new ItemStack(EssenceItemRegistrate.ESSENCE_SHEAR.get()),
-                () -> new ItemStack(EssenceItemRegistrate.ESSENCE_BOW.get())
+                () -> new ItemStack(EssenceItemsRegistry.ESSENCE_AXE.get()),
+                () -> new ItemStack(EssenceItemsRegistry.ESSENCE_PICKAXE.get()),
+                () -> new ItemStack(EssenceItemsRegistry.ESSENCE_SHOVEL.get()),
+                () -> new ItemStack(EssenceItemsRegistry.ESSENCE_SWORD.get()),
+                () -> new ItemStack(EssenceItemsRegistry.ESSENCE_HOE.get()),
+                () -> new ItemStack(EssenceItemsRegistry.ESSENCE_OMNITOOL.get()),
+                () -> new ItemStack(EssenceItemsRegistry.ESSENCE_SHEAR.get()),
+                () -> new ItemStack(EssenceItemsRegistry.ESSENCE_BOW.get())
         );
     }
 

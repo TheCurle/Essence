@@ -1,6 +1,6 @@
 package com.teamacronymcoders.essence.client.render.entity.particle;
 
-import com.teamacronymcoders.essence.compat.registrate.EssenceItemRegistrate;
+import com.teamacronymcoders.essence.compat.registrate.EssenceItemsRegistry;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.BreakingItemParticle;
 import net.minecraft.client.particle.Particle;
@@ -20,7 +20,7 @@ public class BreakingGlueballParticleFactory<BasicParticleType extends ParticleO
     public class GlueBallFactory implements ParticleProvider<BasicParticleType> {
         @Override
         public Particle createParticle(BasicParticleType typeIn, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            return new BreakingGlueballParticleFactory<BasicParticleType>(level, x, y, z, EssenceItemRegistrate.GLUE_BALL_ITEM.asStack());
+            return new BreakingGlueballParticleFactory<BasicParticleType>(level, x, y, z, EssenceItemsRegistry.GLUE_BALL_ITEM.asStack());
         }
     }
 

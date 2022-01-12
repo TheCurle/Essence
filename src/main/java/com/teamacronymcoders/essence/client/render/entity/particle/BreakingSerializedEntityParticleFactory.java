@@ -1,6 +1,6 @@
 package com.teamacronymcoders.essence.client.render.entity.particle;
 
-import com.teamacronymcoders.essence.compat.registrate.EssenceItemRegistrate;
+import com.teamacronymcoders.essence.compat.registrate.EssenceItemsRegistry;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.BreakingItemParticle;
 import net.minecraft.client.particle.Particle;
@@ -22,7 +22,7 @@ public class BreakingSerializedEntityParticleFactory<BasicParticleOptions extend
         @Nullable
         @Override
         public Particle createParticle(BasicParticleOptions pType, ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed) {
-            return new BreakingSerializedEntityParticleFactory<BasicParticleOptions>(level, x, y, z, EssenceItemRegistrate.SERIALIZED_ENTITY.asStack());
+            return new BreakingSerializedEntityParticleFactory<BasicParticleOptions>(level, x, y, z, EssenceItemsRegistry.SERIALIZED_ENTITY.asStack());
         }
     }
 }

@@ -60,12 +60,10 @@ repositories {
 }
 
 sourceSets {
-    main {
-        resources {
-            include '**/**'
-            srcDirs += "$rootDir/src/generated/resources"
-            exclude '.cache'
-        }
+    data
+    main.resources {
+        srcDirs += data.resources.srcDirs
+        exclude '.cache/'
     }
 }
 
@@ -95,7 +93,7 @@ minecraft {
             properties 'mixin.env.disableRefMap': 'true'
             mods {
                 essence {
-                    source(sourceSets.main)
+                    source sourceSets.main
                 }
             }
         }
@@ -105,7 +103,7 @@ minecraft {
             properties 'mixin.env.disableRefMap': 'true'
             mods {
                 essence {
-                    source(sourceSets.main)
+                    source sourceSets.main
                 }
             }
         }
@@ -119,7 +117,7 @@ minecraft {
                     '--mod', 'essence',  '--existing', file('src/main/resources')
             mods {
                 essence {
-                    source(sourceSets.main)
+                    sources sourceSets.main, sourceSets.data
                 }
             }
         }
@@ -129,6 +127,7 @@ minecraft {
 
 configurations {
     shade
+    dataImplementation.extendsFrom implementation
 }
 
 shadowJar {
@@ -140,6 +139,8 @@ shadowJar {
 dependencies {
     // Forge
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    dataImplementation sourceSets.main.output
 
     // Titanium
     implementation fg.deobf("com.hrznstudio:titanium:${titanium_version}") {

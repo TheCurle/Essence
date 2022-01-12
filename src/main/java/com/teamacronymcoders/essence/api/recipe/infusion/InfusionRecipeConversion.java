@@ -4,7 +4,7 @@ import com.hrznstudio.titanium.recipe.serializer.GenericSerializer;
 import com.hrznstudio.titanium.recipe.serializer.SerializableRecipe;
 import com.teamacronymcoders.essence.Essence;
 import com.teamacronymcoders.essence.common.block.infusion.tile.InfusionTableBlockEntity;
-import com.teamacronymcoders.essence.compat.registrate.EssenceItemRegistrate;
+import com.teamacronymcoders.essence.compat.registrate.EssenceItemsRegistry;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -31,7 +31,7 @@ public class InfusionRecipeConversion extends ExtendableInfusionRecipe {
                                     Ingredient.of(Tags.Items.GEMS_DIAMOND), Ingredient.of(Tags.Items.GEMS_DIAMOND),
                                     Ingredient.of(Tags.Items.GEMS_DIAMOND), Ingredient.of(Tags.Items.GEMS_DIAMOND)
                             },
-                            new ItemStack(EssenceItemRegistrate.ESSENCE_INGOT.get()),
+                            new ItemStack(EssenceItemsRegistry.ESSENCE_INGOT.get()),
                             100
                     )
             );

@@ -2,7 +2,7 @@ package com.teamacronymcoders.essence.common.entity;
 
 import com.teamacronymcoders.essence.common.item.wrench.SerializedEntityItem;
 import com.teamacronymcoders.essence.compat.registrate.EssenceEntityRegistrate;
-import com.teamacronymcoders.essence.compat.registrate.EssenceItemRegistrate;
+import com.teamacronymcoders.essence.compat.registrate.EssenceItemsRegistry;
 import com.teamacronymcoders.essence.compat.registrate.EssenceParticleRegistrate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ItemParticleOption;
@@ -109,7 +109,7 @@ public class SerializedEntityEntity extends ThrowableItemProjectile {
 
     @Override
     protected Item getDefaultItem() {
-        return EssenceItemRegistrate.SERIALIZED_ENTITY.get();
+        return EssenceItemsRegistry.SERIALIZED_ENTITY.get();
     }
 
     @Override

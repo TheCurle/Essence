@@ -10,7 +10,7 @@ import com.teamacronymcoders.essence.Essence;
 import com.teamacronymcoders.essence.api.modifier.ModifierInstance;
 import com.teamacronymcoders.essence.common.util.helper.EssenceBowHelper;
 import com.teamacronymcoders.essence.common.util.helper.EssenceItemstackModifierHelpers;
-import com.teamacronymcoders.essence.compat.registrate.EssenceItemRegistrate;
+import com.teamacronymcoders.essence.compat.registrate.EssenceItemsRegistry;
 import com.teamacronymcoders.essence.compat.registrate.EssenceModifierRegistrate;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -75,14 +75,14 @@ public class SetupDevWorldCommand implements Command<CommandSourceStack> {
 
   public List<ItemStack> getTestStacks() {
     List<ItemStack> stacks = Lists.newArrayList();
-    ItemStack stack = new ItemStack(EssenceItemRegistrate.ESSENCE_AXE_DIVINE.get(), 1, null);
+    ItemStack stack = new ItemStack(EssenceItemsRegistry.ESSENCE_AXE_DIVINE.get(), 1, null);
     EssenceItemstackModifierHelpers.addModifiers(stack, new ModifierInstance(EssenceModifierRegistrate.EFFICIENCY_MODIFIER::get, 5, null),
             new ModifierInstance(EssenceModifierRegistrate.FIERY_MODIFIER::get, 5, null),
             new ModifierInstance(EssenceModifierRegistrate.ENCHANTED_MODIFIER::get, 1, null),
             new ModifierInstance(EssenceModifierRegistrate.CASCADING_LUMBER_MODIFIER::get, 1, null));
     stacks.add(stack.copy());
 
-    stack = new ItemStack(EssenceItemRegistrate.ESSENCE_BOW_DIVINE.get(), 1, null);
+    stack = new ItemStack(EssenceItemsRegistry.ESSENCE_BOW_DIVINE.get(), 1, null);
     EssenceItemstackModifierHelpers.addModifiers(stack,
             new ModifierInstance(EssenceModifierRegistrate.STRENGTHENED_POWER_MODIFIER::get, 5, null),
             new ModifierInstance(EssenceModifierRegistrate.KEEN_MODIFIER::get, 5, null),
@@ -96,12 +96,12 @@ public class SetupDevWorldCommand implements Command<CommandSourceStack> {
     );
     stacks.add(stack.copy());
 
-    stack = new ItemStack(EssenceItemRegistrate.ESSENCE_HOE_DIVINE.get(), 1, null);
+    stack = new ItemStack(EssenceItemsRegistry.ESSENCE_HOE_DIVINE.get(), 1, null);
     EssenceItemstackModifierHelpers.addModifiers(stack,
             new ModifierInstance(EssenceModifierRegistrate.EXPANDER_MODIFIER::get, 3, null));
     stacks.add(stack.copy());
 
-    stack = new ItemStack(EssenceItemRegistrate.ESSENCE_OMNITOOL_DIVINE.get(), 1, null);
+    stack = new ItemStack(EssenceItemsRegistry.ESSENCE_OMNITOOL_DIVINE.get(), 1, null);
     EssenceItemstackModifierHelpers.addModifiers(stack,
             new ModifierInstance(EssenceModifierRegistrate.EFFICIENCY_MODIFIER::get, 5, null),
             new ModifierInstance(EssenceModifierRegistrate.UNBREAKING_MODIFIER::get, 5, null),
@@ -111,7 +111,7 @@ public class SetupDevWorldCommand implements Command<CommandSourceStack> {
     );
     stacks.add(stack.copy());
 
-    stack = new ItemStack(EssenceItemRegistrate.ESSENCE_PICKAXE_DIVINE.get(), 1, null);
+    stack = new ItemStack(EssenceItemsRegistry.ESSENCE_PICKAXE_DIVINE.get(), 1, null);
     EssenceItemstackModifierHelpers.addModifiers(stack,
             new ModifierInstance(EssenceModifierRegistrate.EFFICIENCY_MODIFIER::get, 5, null),
             new ModifierInstance(EssenceModifierRegistrate.FIERY_MODIFIER::get, 5, null),
@@ -120,14 +120,14 @@ public class SetupDevWorldCommand implements Command<CommandSourceStack> {
     );
     stacks.add(stack.copy());
 
-    stack = new ItemStack(EssenceItemRegistrate.ESSENCE_SHEAR_DIVINE.get(), 1, null);
+    stack = new ItemStack(EssenceItemsRegistry.ESSENCE_SHEAR_DIVINE.get(), 1, null);
     EssenceItemstackModifierHelpers.addModifiers(stack,
             new ModifierInstance(EssenceModifierRegistrate.RAINBOW_MODIFIER::get, 1, null),
             new ModifierInstance(EssenceModifierRegistrate.ENCHANTED_MODIFIER::get, 1, null)
     );
     stacks.add(stack.copy());
 
-    stack = new ItemStack(EssenceItemRegistrate.ESSENCE_SHOVEL_DIVINE.get(), 1, null);
+    stack = new ItemStack(EssenceItemsRegistry.ESSENCE_SHOVEL_DIVINE.get(), 1, null);
     EssenceItemstackModifierHelpers.addModifiers(stack,
             new ModifierInstance(EssenceModifierRegistrate.EFFICIENCY_MODIFIER::get, 5, null),
             new ModifierInstance(EssenceModifierRegistrate.FIERY_MODIFIER::get, 5, null),
@@ -136,21 +136,21 @@ public class SetupDevWorldCommand implements Command<CommandSourceStack> {
     );
     stacks.add(stack.copy());
 
-    stack = new ItemStack(EssenceItemRegistrate.ESSENCE_SWORD_DIVINE.get(), 1, null);
+    stack = new ItemStack(EssenceItemsRegistry.ESSENCE_SWORD_DIVINE.get(), 1, null);
     EssenceItemstackModifierHelpers.addModifiers(stack,
             new ModifierInstance(EssenceModifierRegistrate.UNBREAKING_MODIFIER::get, 5, null),
             new ModifierInstance(EssenceModifierRegistrate.STRENGTHENED_SHARPNESS_MODIFIER::get, 5, null)
     );
     stacks.add(stack.copy());
 
-    stack = new ItemStack(EssenceItemRegistrate.ESSENCE_SWORD_DIVINE.get(), 1, null);
+    stack = new ItemStack(EssenceItemsRegistry.ESSENCE_SWORD_DIVINE.get(), 1, null);
     EssenceItemstackModifierHelpers.addModifiers(stack,
             new ModifierInstance(EssenceModifierRegistrate.UNBREAKING_MODIFIER::get, 5, null),
             new ModifierInstance(EssenceModifierRegistrate.STRENGTHENED_ARTHROPOD_MODIFIER::get, 5, null)
     );
     stacks.add(stack.copy());
 
-    stack = new ItemStack(EssenceItemRegistrate.ESSENCE_SWORD_DIVINE.get(), 1, null);
+    stack = new ItemStack(EssenceItemsRegistry.ESSENCE_SWORD_DIVINE.get(), 1, null);
     EssenceItemstackModifierHelpers.addModifiers(stack,
             new ModifierInstance(EssenceModifierRegistrate.UNBREAKING_MODIFIER::get, 5, null),
             new ModifierInstance(EssenceModifierRegistrate.STRENGTHENED_SMITE_MODIFIER::get, 5, null)

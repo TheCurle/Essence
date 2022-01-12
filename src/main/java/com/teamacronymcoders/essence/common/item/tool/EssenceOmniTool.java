@@ -53,83 +53,6 @@ public class EssenceOmniTool extends DiggerItem implements IModifiedItem {
         return tier.getRarity();
     }
 
-    public InteractionResult onItemBehaviour(UseOnContext context) {
-        Level level = context.getLevel();
-        Block block = level.getBlockState(context.getClickedPos()).getBlock();
-        InteractionResult result = level.getRecipeManager().getRecipes().stream()
-                .filter(iRecipe -> iRecipe.getType() == AxeStrippingRecipe.SERIALIZER.getRecipeType())
-                .map(iRecipe -> (AxeStrippingRecipe) iRecipe)
-                .filter(recipe -> recipe.matches(block))
-                .findFirst().map(recipe -> recipe.resolveRecipe(context)).orElse(InteractionResult.PASS);
-        if (result == InteractionResult.PASS) {
-            result = level.getRecipeManager().getRecipes().stream()
-                    .filter(iRecipe -> iRecipe.getType() == ShovelPathingRecipe.SERIALIZER.getRecipeType())
-                    .map(iRecipe -> (ShovelPathingRecipe) iRecipe)
-                    .filter(recipe -> recipe.matches(block))
-                    .findFirst().map(recipe -> recipe.resolveRecipe(context)).orElse(InteractionResult.PASS);
-        }
-        return result;
-    }
-
-    @Override
-    @ParametersAreNonnullByDefault
-    public @NotNull InteractionResult useOn(UseOnContext context) {
-        Level level = context.getLevel();
-        Player player = context.getPlayer();
-        BlockPos pos = context.getClickedPos();
-        BlockState state = level.getBlockState(pos);
-        ItemStack stack = context.getItemInHand();
-        InteractionResult resultType = InteractionResult.FAIL;
-        BlockState behaviourState;
-
-        // Check Vanilla Axe Behaviour
-        behaviourState = state.getToolModifiedState(level, pos, player, stack, ToolActions.AXE_STRIP);
-        if (behaviourState != null && !behaviourState.equals(state)) {
-            level.setBlock(pos, behaviourState, Block.UPDATE_ALL_IMMEDIATE);
-            resultType = InteractionResult.SUCCESS;
-        }
-        if (resultType == InteractionResult.SUCCESS) {
-            return resultType;
-        }
-
-        // Check Pickaxe Behaviour
-        behaviourState = state.getToolModifiedState(level, pos, player, stack, ToolActions.PICKAXE_DIG);
-        if (behaviourState != null && !behaviourState.equals(state)) {
-            level.setBlock(pos, behaviourState, Block.UPDATE_ALL_IMMEDIATE);
-            resultType = InteractionResult.SUCCESS;
-        }
-        if (resultType == InteractionResult.SUCCESS) {
-            return resultType;
-        }
-
-        // Check Vanilla Shovel Behaviour
-        behaviourState = state.getToolModifiedState(level, pos, player, stack, ToolActions.SHOVEL_FLATTEN);
-        if (behaviourState != null && behaviourState.equals(state)) {
-            level.setBlock(pos, behaviourState, Block.UPDATE_ALL_IMMEDIATE);
-            resultType = InteractionResult.SUCCESS;
-        }
-        if (resultType == InteractionResult.SUCCESS) {
-            return resultType;
-        }
-
-        // Check Recipes
-        resultType = onItemBehaviour(context);
-        if (resultType == InteractionResult.SUCCESS) {
-            return resultType;
-        }
-
-        // Fallback on Modifier Behaviour
-        return useOnFromModifier(context).orElse(resultType);
-    }
-
-    @Override
-    public InteractionResult useOnModified(UseOnContext context, boolean isRecursive) {
-        if (isRecursive) {
-            return onItemBehaviour(context);
-        }
-        return useOn(context);
-    }
-
     @Override
     @ParametersAreNonnullByDefault
     public boolean isEnchantable(ItemStack stack) {
@@ -213,5 +136,10 @@ public class EssenceOmniTool extends DiggerItem implements IModifiedItem {
     @Override
     public @NotNull EssenceToolTiers getTier() {
         return tier;
+    }
+
+    @Override
+    public InteractionResult useOnModified(UseOnContext context, boolean isRecursive) {
+        return useOn(context);
     }
 }

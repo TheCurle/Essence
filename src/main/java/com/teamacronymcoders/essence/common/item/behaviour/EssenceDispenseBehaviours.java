@@ -6,7 +6,7 @@ import com.teamacronymcoders.essence.common.entity.GlueBallEntity;
 import com.teamacronymcoders.essence.common.item.misc.GlueBallItem;
 import com.teamacronymcoders.essence.common.item.tool.EssenceShear;
 import com.teamacronymcoders.essence.common.util.helper.EssenceItemstackModifierHelpers;
-import com.teamacronymcoders.essence.compat.registrate.EssenceItemRegistrate;
+import com.teamacronymcoders.essence.compat.registrate.EssenceItemsRegistry;
 import com.teamacronymcoders.essence.compat.registrate.EssenceModifierRegistrate;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -49,11 +49,11 @@ public class EssenceDispenseBehaviours {
     };
 
     static {
-        dispenserBehaviours.put(EssenceItemRegistrate.ESSENCE_SHEAR.get(), shearBehaviour);
-        dispenserBehaviours.put(EssenceItemRegistrate.ESSENCE_SHEAR_EMPOWERED.get(), shearBehaviour);
-        dispenserBehaviours.put(EssenceItemRegistrate.ESSENCE_SHEAR_SUPREME.get(), shearBehaviour);
-        dispenserBehaviours.put(EssenceItemRegistrate.ESSENCE_SHEAR_DIVINE.get(), shearBehaviour);
-        dispenserBehaviours.put(EssenceItemRegistrate.GLUE_BALL_ITEM.get(), new AbstractProjectileDispenseBehavior() {
+        dispenserBehaviours.put(EssenceItemsRegistry.ESSENCE_SHEAR.get(), shearBehaviour);
+        dispenserBehaviours.put(EssenceItemsRegistry.ESSENCE_SHEAR_EMPOWERED.get(), shearBehaviour);
+        dispenserBehaviours.put(EssenceItemsRegistry.ESSENCE_SHEAR_SUPREME.get(), shearBehaviour);
+        dispenserBehaviours.put(EssenceItemsRegistry.ESSENCE_SHEAR_DIVINE.get(), shearBehaviour);
+        dispenserBehaviours.put(EssenceItemsRegistry.GLUE_BALL_ITEM.get(), new AbstractProjectileDispenseBehavior() {
             @Override
             protected @NotNull Projectile getProjectile(@NotNull Level level, @NotNull Position position, @NotNull ItemStack stackIn) {
                 return stackIn.getItem() instanceof GlueBallItem ? Util.make(new GlueBallEntity(level, position.x(), position.y(), position.z()), glueBallEntity -> glueBallEntity.setItem(stackIn)) : null;

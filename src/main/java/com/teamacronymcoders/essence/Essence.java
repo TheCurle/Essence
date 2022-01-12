@@ -118,7 +118,7 @@ public class Essence extends ModuleController {
         EssenceEventHandlers.setup();
 
         // Registrates
-        EssenceItemRegistrate.init();
+        EssenceItemsRegistry.init();
         EssenceBlockRegistrate.init();
         EssenceFluidRegistrate.init();
         EssenceEntityRegistrate.init();
@@ -183,18 +183,18 @@ public class Essence extends ModuleController {
         new EssenceKeyHandler();
 
         // Pull
-        ItemProperties.register(EssenceItemRegistrate.DECODER_SLINGSHOT.get(), new ResourceLocation(Essence.MOD_ID, "pull"), EssenceItemProperties.getPull());
-        ItemProperties.register(EssenceItemRegistrate.ESSENCE_BOW.get(), new ResourceLocation(Essence.MOD_ID, "pull"), EssenceItemProperties.getPull());
-        ItemProperties.register(EssenceItemRegistrate.ESSENCE_BOW_EMPOWERED.get(), new ResourceLocation(Essence.MOD_ID, "pull"), EssenceItemProperties.getPull());
-        ItemProperties.register(EssenceItemRegistrate.ESSENCE_BOW_SUPREME.get(), new ResourceLocation(Essence.MOD_ID, "pull"), EssenceItemProperties.getPull());
-        ItemProperties.register(EssenceItemRegistrate.ESSENCE_BOW_DIVINE.get(), new ResourceLocation(Essence.MOD_ID, "pull"), EssenceItemProperties.getPull());
+        ItemProperties.register(EssenceItemsRegistry.DECODER_SLINGSHOT.get(), new ResourceLocation(Essence.MOD_ID, "pull"), EssenceItemProperties.getPull());
+        ItemProperties.register(EssenceItemsRegistry.ESSENCE_BOW.get(), new ResourceLocation(Essence.MOD_ID, "pull"), EssenceItemProperties.getPull());
+        ItemProperties.register(EssenceItemsRegistry.ESSENCE_BOW_EMPOWERED.get(), new ResourceLocation(Essence.MOD_ID, "pull"), EssenceItemProperties.getPull());
+        ItemProperties.register(EssenceItemsRegistry.ESSENCE_BOW_SUPREME.get(), new ResourceLocation(Essence.MOD_ID, "pull"), EssenceItemProperties.getPull());
+        ItemProperties.register(EssenceItemsRegistry.ESSENCE_BOW_DIVINE.get(), new ResourceLocation(Essence.MOD_ID, "pull"), EssenceItemProperties.getPull());
 
         // Pulling
-        ItemProperties.register(EssenceItemRegistrate.DECODER_SLINGSHOT.get(), new ResourceLocation(Essence.MOD_ID, "pulling"), EssenceItemProperties.getPulling());
-        ItemProperties.register(EssenceItemRegistrate.ESSENCE_BOW.get(), new ResourceLocation(Essence.MOD_ID, "pulling"), EssenceItemProperties.getPulling());
-        ItemProperties.register(EssenceItemRegistrate.ESSENCE_BOW_EMPOWERED.get(), new ResourceLocation(Essence.MOD_ID, "pulling"), EssenceItemProperties.getPulling());
-        ItemProperties.register(EssenceItemRegistrate.ESSENCE_BOW_SUPREME.get(), new ResourceLocation(Essence.MOD_ID, "pulling"), EssenceItemProperties.getPulling());
-        ItemProperties.register(EssenceItemRegistrate.ESSENCE_BOW_DIVINE.get(), new ResourceLocation(Essence.MOD_ID, "pulling"), EssenceItemProperties.getPulling());
+        ItemProperties.register(EssenceItemsRegistry.DECODER_SLINGSHOT.get(), new ResourceLocation(Essence.MOD_ID, "pulling"), EssenceItemProperties.getPulling());
+        ItemProperties.register(EssenceItemsRegistry.ESSENCE_BOW.get(), new ResourceLocation(Essence.MOD_ID, "pulling"), EssenceItemProperties.getPulling());
+        ItemProperties.register(EssenceItemsRegistry.ESSENCE_BOW_EMPOWERED.get(), new ResourceLocation(Essence.MOD_ID, "pulling"), EssenceItemProperties.getPulling());
+        ItemProperties.register(EssenceItemsRegistry.ESSENCE_BOW_SUPREME.get(), new ResourceLocation(Essence.MOD_ID, "pulling"), EssenceItemProperties.getPulling());
+        ItemProperties.register(EssenceItemsRegistry.ESSENCE_BOW_DIVINE.get(), new ResourceLocation(Essence.MOD_ID, "pulling"), EssenceItemProperties.getPulling());
 
         // Toggled
         // TODO: Implement for Tablet of Muffling

@@ -161,8 +161,8 @@ public class EssenceBlockRegistrate {
             .loot(BlockLoot::dropSelf)
             .lang("Ancient Enderite")
             .recipe((context, provider) -> {
-                provider.smelting(DataIngredient.items(context.get()), EssenceItemRegistrate.ENDERITE_SCRAP, 2.0F);
-                provider.blasting(DataIngredient.items(context.get()), EssenceItemRegistrate.ENDERITE_SCRAP, 2.0F);
+                provider.smelting(DataIngredient.items(context.get()), EssenceItemsRegistry.ENDERITE_SCRAP, 2.0F);
+                provider.blasting(DataIngredient.items(context.get()), EssenceItemsRegistry.ENDERITE_SCRAP, 2.0F);
             })
             .item()
             .tab(() -> Essence.CORE_TAB)
@@ -419,7 +419,7 @@ public class EssenceBlockRegistrate {
                                         .when(MatchTool.toolMatches(ItemPredicate.Builder.item()
                                                 .hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1)))
                                         )),
-                                LootItem.lootTableItem(EssenceItemRegistrate.RAW_ESSENCE.get())
+                                LootItem.lootTableItem(EssenceItemsRegistry.RAW_ESSENCE.get())
                                         .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
                                         .apply(ApplyExplosionDecay.explosionDecay())
                         ))
@@ -436,7 +436,7 @@ public class EssenceBlockRegistrate {
                                         .when(MatchTool.toolMatches(ItemPredicate.Builder.item()
                                                 .hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1)))
                                         )),
-                                LootItem.lootTableItem(EssenceItemRegistrate.ESSENCE_CRYSTAL.get())
+                                LootItem.lootTableItem(EssenceItemsRegistry.ESSENCE_CRYSTAL.get())
                                         .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
                                         .apply(ApplyExplosionDecay.explosionDecay())
                         ))

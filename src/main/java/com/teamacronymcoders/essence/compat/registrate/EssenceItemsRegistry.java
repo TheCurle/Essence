@@ -30,14 +30,134 @@ import net.minecraft.world.item.Rarity;
 import net.minecraftforge.client.model.generators.ModelBuilder;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
+/**
+ * Central registration location for Essence's Items.
+ * When adding an item here, make sure to add Localization {@see EnUSLangProvider.class},
+ * a Model {@see ItemModelProviders.class} and a Tag {@see ItemTagsProviders.class} if appropriate.
+ *
+ * @author Lanse505, Curle
+ */
 @SuppressWarnings("unchecked")
-public class EssenceItemRegistrate {
+public class EssenceItemsRegistry {
+
+    private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Essence.MOD_ID);
+
+    // CORE ITEMS
+    public static final RegistryObject<Item> RAW_ESSENCE = ITEMS.register("raw_essence", () ->
+            new Item(new Item.Properties().fireResistant().tab(Essence.CORE_TAB))
+    );
+
+    public static final RegistryObject<Item> ESSENCE_CRYSTAL = ITEMS.register("essence_crystal", () ->
+            new EssenceCrystalItem(new Item.Properties().tab(Essence.CORE_TAB), EssenceItemTiers.BASIC)
+    );
+
+    public static final RegistryObject<Item> ESSENCE_CRYSTAL_EMPOWERED = ITEMS.register("empowered_essence_crystal", () ->
+            new EssenceCrystalItem(new Item.Properties().tab(Essence.CORE_TAB), EssenceItemTiers.EMPOWERED)
+    );
+
+    public static final RegistryObject<Item> ESSENCE_CRYSTAL_SUPREME = ITEMS.register("supreme_essence_crystal", () ->
+            new EssenceCrystalItem(new Item.Properties().tab(Essence.CORE_TAB), EssenceItemTiers.SUPREME)
+    );
+
+    public static final RegistryObject<Item> ESSENCE_CRYSTAL_DIVINE = ITEMS.register("divine_essence_crystal", () ->
+            new EssenceCrystalItem(new Item.Properties().tab(Essence.CORE_TAB), EssenceItemTiers.DIVINE)
+    );
+
+    public static final RegistryObject<Item> ESSENCE_STICK = ITEMS.register("essence_stick", () ->
+            new BasicItem(new Item.Properties().tab(Essence.CORE_TAB))
+    );
+
+    public static final RegistryObject<Item> ENDERITE_SCRAP = ITEMS.register("enderite_scrap", () ->
+            new BasicItem(new Item.Properties().tab(Essence.CORE_TAB))
+    );
+
+    // Tiered Items
+    public static final RegistryObject<Item> ESSENCE_INGOT = ITEMS.register("essence_ingot", () ->
+            new EssenceIngotItem(new Item.Properties().tab(Essence.CORE_TAB), EssenceItemTiers.BASIC)
+    );
+
+    public static final RegistryObject<Item> ESSENCE_INGOT_EMPOWERED = ITEMS.register("empowered_essence_ingot", () ->
+            new EssenceIngotItem(new Item.Properties().tab(Essence.CORE_TAB), EssenceItemTiers.EMPOWERED)
+    );
+
+    public static final RegistryObject<Item> ESSENCE_INGOT_SUPREME = ITEMS.register("supreme_essence_ingot", () ->
+            new EssenceIngotItem(new Item.Properties().tab(Essence.CORE_TAB), EssenceItemTiers.SUPREME)
+    );
+
+    public static final RegistryObject<Item> ESSENCE_INGOT_DIVINE = ITEMS.register("divine_essence_ingot", () ->
+            new EssenceIngotItem(new Item.Properties().tab(Essence.CORE_TAB), EssenceItemTiers.DIVINE)
+    );
+
+    public static final RegistryObject<Item> ESSENCE_NUGGET = ITEMS.register("essence_nugget", () ->
+            new EssenceNuggetItem(new Item.Properties().tab(Essence.CORE_TAB), EssenceItemTiers.BASIC)
+    );
+
+    public static final RegistryObject<Item> ESSENCE_NUGGET_EMPOWERED = ITEMS.register("empowered_essence_nugget", () ->
+            new EssenceNuggetItem(new Item.Properties().tab(Essence.CORE_TAB), EssenceItemTiers.EMPOWERED)
+    );
+
+    public static final RegistryObject<Item> ESSENCE_NUGGET_SUPREME = ITEMS.register("supreme_essence_nugget", () ->
+            new EssenceNuggetItem(new Item.Properties().tab(Essence.CORE_TAB), EssenceItemTiers.SUPREME)
+    );
+
+    public static final RegistryObject<Item> ESSENCE_NUGGET_DIVINE = ITEMS.register("divine_essence_nugget", () ->
+            new EssenceNuggetItem(new Item.Properties().tab(Essence.CORE_TAB), EssenceItemTiers.DIVINE)
+    );
+
+    // TOMES
+
+    public static final RegistryObject<Item> TOME_OF_KNOWLEDGE = ITEMS.register("tome_of_knowledge", () ->
+            new TomeOfKnowledgeItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(Essence.CORE_TAB))
+    );
+
+    public static final RegistryObject<Item> TOME_OF_EXPERIENCE = ITEMS.register("tome_of_experience", () ->
+            new TomeOfExperienceItem(new Item.Properties().stacksTo(1).tab(Essence.CORE_TAB))
+    );
+
+    // Misc
+    public static final RegistryObject<Item> FELINIUM_JAMINITE_INGOT = ITEMS.register("felinium_jaminite_ingot", () ->
+            new Item(new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(Essence.CORE_TAB))
+    );
+
+    public static FoodProperties CRAFTING_COOKIE_FOOD = new FoodProperties.Builder().nutrition(2).saturationMod(0.1F).alwaysEat().build();
+
+    public static final RegistryObject<Item> CRAFTING_COOKIE = ITEMS.register("crafting_cookie", () ->
+            new CraftingCookieItem(new Item.Properties().rarity(Rarity.RARE).food(CRAFTING_COOKIE_FOOD).tab(Essence.CORE_TAB))
+    );
+
+    public static final RegistryObject<Item> ESSENCE_WRENCH = ITEMS.register("essence_wrench", () ->
+            new EssenceWrench(new Item.Properties().stacksTo(1).defaultDurability(2048).rarity(Rarity.RARE).tab(Essence.TOOL_TAB))
+    );
+
+    public static final RegistryObject<Item> SERIALIZED_ENTITY = ITEMS.register("serialized_entity", () ->
+            new SerializedEntityItem(new Item.Properties().defaultDurability(1))
+    );
+
+    public static final RegistryObject<Item> GLUE_BALL_ITEM = ITEMS.register("glue_ball", () ->
+            new GlueBallItem(new Item.Properties().tab(Essence.CORE_TAB))
+    );
+
+    public static final RegistryObject<Item> DECODER_SLINGSHOT = ITEMS.register("decoder_slingshot", () ->
+            new DecoderSlingshot(new Item.Properties().stacksTo(1).defaultDurability(640).tab(Essence.TOOL_TAB))
+    );
+
+    /*
+    public static final RegistryObject<Item> name = ITEMS.register("", () ->
+            new Item(new Item.Properties())
+    );
+     */
+
+
 
     public static final Map<Class<?>, BiFunction<Item.Properties, EssenceToolTiers, Item>> constructorMap = new HashMap<>();
     public static final Map<Class<?>, ResourceLocation> textureMap = new HashMap<>();
@@ -65,203 +185,19 @@ public class EssenceItemRegistrate {
     }
 
     public static void init() {
+        ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     // CORE
-    public static ItemEntry<Item> RAW_ESSENCE = Essence.ESSENCE_REGISTRATE.object("raw_essence")
-            .item(Item::new)
-            .properties(Item.Properties::fireResistant)
-            .tab(() -> Essence.CORE_TAB)
-            .lang("Raw Essence")
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/raw_essence")))
-            .register();
-
-    public static ItemEntry<EssenceCrystalItem> ESSENCE_CRYSTAL = Essence.ESSENCE_REGISTRATE.object("essence_crystal")
-            .item(properties -> new EssenceCrystalItem(properties, EssenceItemTiers.BASIC))
-            .properties(properties -> properties.tab(Essence.CORE_TAB))
-            .lang("Essence-Infused Crystal")
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/essence_crystal")))
-            .tag(EssenceTags.EssenceItemTags.ESSENCE_INFUSED_CRYSTAL)
-            .register();
-    public static ItemEntry<EssenceCrystalItem> ESSENCE_CRYSTAL_EMPOWERED = Essence.ESSENCE_REGISTRATE.object("empowered_essence_crystal")
-            .item(properties -> new EssenceCrystalItem(properties, EssenceItemTiers.EMPOWERED))
-            .properties(properties -> properties.tab(Essence.CORE_TAB))
-            .lang("Essence-Infused Crystal")
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/empowered_essence_crystal")))
-            .tag(EssenceTags.EssenceItemTags.ESSENCE_INFUSED_CRYSTAL_EMPOWERED)
-            .register();
-    public static ItemEntry<EssenceCrystalItem> ESSENCE_CRYSTAL_SUPREME = Essence.ESSENCE_REGISTRATE.object("supreme_essence_crystal")
-            .item(properties -> new EssenceCrystalItem(properties, EssenceItemTiers.SUPREME))
-            .tab(() -> Essence.CORE_TAB)
-            .lang("Essence-Infused Crystal")
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/supreme_essence_crystal")))
-            .tag(EssenceTags.EssenceItemTags.ESSENCE_INFUSED_CRYSTAL_SUPREME)
-            .register();
-    public static ItemEntry<EssenceCrystalItem> ESSENCE_CRYSTAL_DIVINE = Essence.ESSENCE_REGISTRATE.object("divine_essence_crystal")
-            .item(properties -> new EssenceCrystalItem(properties, EssenceItemTiers.DIVINE))
-            .tab(() -> Essence.CORE_TAB)
-            .lang("Essence-Infused Crystal")
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/divine_essence_crystal")))
-            .tag(EssenceTags.EssenceItemTags.ESSENCE_INFUSED_CRYSTAL_DIVINE)
-            .register();
-
-    public static ItemEntry<BasicItem> ESSENCE_STICK = Essence.ESSENCE_REGISTRATE.object("essence_stick")
-            .item(BasicItem::new)
-            .tab(() -> Essence.CORE_TAB)
-            .lang("Essence-Wood Sticks")
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/essence_stick")))
-            .tag(EssenceTags.EssenceItemTags.ESSENCE_INFUSED_STICK)
-            .register();
-    public static ItemEntry<BasicItem> ENDERITE_SCRAP = Essence.ESSENCE_REGISTRATE.object("enderite_scrap")
-            .item(BasicItem::new)
-            .tab(() -> Essence.CORE_TAB)
-            .lang("Enderite Scrap")
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/enderite_scrap")))
-            .tag(EssenceTags.EssenceItemTags.ENDERITE_SCRAP)
-            .register();
 
     // Tiered Materials
-    public static ItemEntry<EssenceIngotItem> ESSENCE_INGOT = Essence.ESSENCE_REGISTRATE.object("essence_ingot")
-            .item(properties -> new EssenceIngotItem(properties, EssenceItemTiers.BASIC))
-            .tab(() -> Essence.CORE_TAB)
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/essence_ingot")))
-            .lang("Essence Ingot")
-            .tag(EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL)
-            .register();
-    public static ItemEntry<EssenceIngotItem> ESSENCE_INGOT_EMPOWERED = Essence.ESSENCE_REGISTRATE.object("empowered_essence_ingot")
-            .item(properties -> new EssenceIngotItem(properties, EssenceItemTiers.EMPOWERED))
-            .tab(() -> Essence.CORE_TAB)
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/empowered_essence_ingot")))
-            .lang("Essence Ingot")
-            .tag(EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_EMPOWERED)
-            .register();
-    public static ItemEntry<EssenceIngotItem> ESSENCE_INGOT_SUPREME = Essence.ESSENCE_REGISTRATE.object("supreme_essence_ingot")
-            .item(properties -> new EssenceIngotItem(properties, EssenceItemTiers.SUPREME))
-            .tab(() -> Essence.CORE_TAB)
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/supreme_essence_ingot")))
-            .lang("Essence Ingot")
-            .tag(EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_SUPREME)
-            .register();
-    public static ItemEntry<EssenceIngotItem> ESSENCE_INGOT_DIVINE = Essence.ESSENCE_REGISTRATE.object("divine_essence_ingot")
-            .item(properties -> new EssenceIngotItem(properties, EssenceItemTiers.DIVINE))
-            .tab(() -> Essence.CORE_TAB)
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/divine_essence_ingot")))
-            .lang("Essence Ingot")
-            .tag(EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_DIVINE)
-            .register();
-
-    public static ItemEntry<EssenceNuggetItem> ESSENCE_NUGGET = Essence.ESSENCE_REGISTRATE.object("essence_nugget")
-            .item(properties -> new EssenceNuggetItem(properties, EssenceItemTiers.BASIC))
-            .tab(() -> Essence.CORE_TAB)
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/essence_nugget")))
-            .lang("Essence Nugget")
-            .tag(EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_NUGGET)
-            .register();
-    public static ItemEntry<EssenceNuggetItem> ESSENCE_NUGGET_EMPOWERED = Essence.ESSENCE_REGISTRATE.object("empowered_essence_nugget")
-            .item(properties -> new EssenceNuggetItem(properties, EssenceItemTiers.EMPOWERED))
-            .tab(() -> Essence.CORE_TAB)
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/empowered_essence_nugget")))
-            .lang("Essence Nugget")
-            .tag(EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_NUGGET_EMPOWERED)
-            .register();
-    public static ItemEntry<EssenceNuggetItem> ESSENCE_NUGGET_SUPREME = Essence.ESSENCE_REGISTRATE.object("supreme_essence_nugget")
-            .item(properties -> new EssenceNuggetItem(properties, EssenceItemTiers.SUPREME))
-            .tab(() -> Essence.CORE_TAB)
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/supreme_essence_nugget")))
-            .lang("Essence Nugget")
-            .tag(EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_NUGGET_SUPREME)
-            .register();
-    public static ItemEntry<EssenceNuggetItem> ESSENCE_NUGGET_DIVINE = Essence.ESSENCE_REGISTRATE.object("divine_essence_nugget")
-            .item(properties -> new EssenceNuggetItem(properties, EssenceItemTiers.DIVINE))
-            .tab(() -> Essence.CORE_TAB)
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/divine_essence_nugget")))
-            .lang("Essence Nugget")
-            .tag(EssenceTags.EssenceItemTags.ESSENCE_INFUSED_METAL_NUGGET_DIVINE)
-            .register();
 
     // Tomes
-    public static ItemEntry<TomeOfKnowledgeItem> TOME_OF_KNOWLEDGE = Essence.ESSENCE_REGISTRATE.object("tome_of_knowledge")
-            .item(TomeOfKnowledgeItem::new).properties(properties -> properties.stacksTo(1).rarity(Rarity.RARE))
-            .lang("Tome of Bound-Knowledge")
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/tome_of_knowledge")))
-            .tab(() -> Essence.CORE_TAB)
-            .register();
 
-    public static ItemEntry<TomeOfExperienceItem> TOME_OF_EXPERIENCE = Essence.ESSENCE_REGISTRATE.object("tome_of_experience")
-            .item(TomeOfExperienceItem::new).properties(properties -> properties.stacksTo(1))
-            .lang("Tome of Experience")
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/tome_of_experience")))
-            .tab(() -> Essence.CORE_TAB)
-            .register();
-
-    // Misc
-    public static ItemEntry<Item> FELINIUM_JAMINITE_INGOT = Essence.ESSENCE_REGISTRATE.object("felinium_jaminite_ingot")
-            .item(Item::new).properties(properties -> properties.fireResistant().rarity(Rarity.EPIC))
-            .lang("Felinium Jaminite Ingot")
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/felinium_jaminite_ingot")))
-            .tab(() -> Essence.CORE_TAB)
-            .register();
 
     // Tools
     // MISC
-    public static FoodProperties CRAFTING_COOKIE_FOOD = new FoodProperties.Builder().nutrition(2).saturationMod(0.1F).alwaysEat().build();
-    public static ItemEntry<CraftingCookieItem> CRAFTING_COOKIE = Essence.ESSENCE_REGISTRATE.object("crafting_cookie")
-            .item(CraftingCookieItem::new).properties(properties -> properties.stacksTo(64).rarity(Rarity.RARE).food(CRAFTING_COOKIE_FOOD))
-            .tab(() -> Essence.CORE_TAB)
-            .lang("Crafting Cookie")
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/crafting_cookie")))
-            .register();
-    public static ItemEntry<EssenceWrench> ESSENCE_WRENCH = Essence.ESSENCE_REGISTRATE.object("essence_wrench")
-            .item(EssenceWrench::new)
-            .properties(properties -> properties.stacksTo(1).defaultDurability(2048).rarity(Rarity.RARE))
-            .tab(() -> Essence.TOOL_TAB)
-            .model((context, provider) -> provider.handheld(context, new ResourceLocation(Essence.MOD_ID, "item/essence_wrench")))
-            .lang("Essence-Infused Wrench").register();
-    public static ItemEntry<SerializedEntityItem> SERIALIZED_ENTITY = Essence.ESSENCE_REGISTRATE.object("serialized_entity")
-            .item(SerializedEntityItem::new)
-            .properties(properties -> properties.defaultDurability(1))
-            .lang("Serialized Entity")
-            .model((context, provider) -> provider.getBuilder(context.getId().getPath()).parent(new ModelFile.UncheckedModelFile(new ResourceLocation("builtin/entity"))))
-            .register();
-    public static ItemEntry<GlueBallItem> GLUE_BALL_ITEM = Essence.ESSENCE_REGISTRATE.object("glue_ball")
-            .item(GlueBallItem::new)
-            .tab(() -> Essence.CORE_TAB)
-            .lang("Ball of Glue")
-            .model((context, provider) -> provider.handheld(context))
-            .register();
-    public static ItemEntry<DecoderSlingshot> DECODER_SLINGSHOT = Essence.ESSENCE_REGISTRATE.object("decoder_slingshot")
-            .item(DecoderSlingshot::new)
-            .properties(properties -> properties.stacksTo(1).defaultDurability(640))
-            .tab(() -> Essence.TOOL_TAB)
-            .lang("Decoder Slingshot")
-            .model((context, provider) -> {
-                provider.generated(context)
-                        .texture("layer0", new ResourceLocation(Essence.MOD_ID, "item/decoder_slingshot"))
-                        .transforms()
-                        .transform(ModelBuilder.Perspective.THIRDPERSON_RIGHT).rotation(-80, 260, -40).translation(-1, -2, 2.5f).scale(0.9f).end()
-                        .transform(ModelBuilder.Perspective.THIRDPERSON_LEFT).rotation(-80, -280, 40).translation(-1, -2, 2.5f).scale(0.9f).end()
-                        .transform(ModelBuilder.Perspective.FIRSTPERSON_RIGHT).rotation(0, -90, 25).translation(1.13f, 3.2f, 1.13f).scale(0.68f).end()
-                        .transform(ModelBuilder.Perspective.FIRSTPERSON_LEFT).rotation(0, 90, -25).translation(1.13f, 3.2f, 1.13f).scale(0.68f).end()
-                        .end()
-                        .override()
-                        .predicate(new ResourceLocation(Essence.MOD_ID, "pulling"), 1)
-                        .model(new ModelFile.UncheckedModelFile(new ResourceLocation(Essence.MOD_ID, "item/decoder_slingshot_pulling_0")))
-                        .end()
-                        .override()
-                        .predicate(new ResourceLocation(Essence.MOD_ID, "pulling"), 1)
-                        .predicate(new ResourceLocation(Essence.MOD_ID, "pull"), 0.65f)
-                        .model(new ModelFile.UncheckedModelFile(new ResourceLocation(Essence.MOD_ID, "item/decoder_slingshot_pulling_1")))
-                        .end()
-                        .override()
-                        .predicate(new ResourceLocation(Essence.MOD_ID, "pulling"), 1)
-                        .predicate(new ResourceLocation(Essence.MOD_ID, "pull"), 0.9f)
-                        .model(new ModelFile.UncheckedModelFile(new ResourceLocation(Essence.MOD_ID, "item/decoder_slingshot_pulling_2")))
-                        .end();
-                provider.withExistingParent("decoder_slingshot_pulling_0", new ResourceLocation(Essence.MOD_ID, "item/decoder_slingshot")).texture("layer0", new ResourceLocation(Essence.MOD_ID, "item/decoder_slingshot_pulling_0"));
-                provider.withExistingParent("decoder_slingshot_pulling_1", new ResourceLocation(Essence.MOD_ID, "item/decoder_slingshot")).texture("layer0", new ResourceLocation(Essence.MOD_ID, "item/decoder_slingshot_pulling_1"));
-                provider.withExistingParent("decoder_slingshot_pulling_2", new ResourceLocation(Essence.MOD_ID, "item/decoder_slingshot")).texture("layer0", new ResourceLocation(Essence.MOD_ID, "item/decoder_slingshot_pulling_2"));
-            })
-            .register();
+
 
 
     // Tier 1
